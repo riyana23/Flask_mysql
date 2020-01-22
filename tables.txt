@@ -1,0 +1,40 @@
+create table mst_class(
+   class_id INT NOT NULL AUTO_INCREMENT,
+   class_name VARCHAR(100) NOT NULL,
+   PRIMARY KEY (class_id)
+);
+
+create table mst_student(
+   student_id INT NOT NULL AUTO_INCREMENT,
+   student_name VARCHAR(100) NOT NULL,
+   mst_class_id INT NOT NULL,
+   PRIMARY KEY (student_id),
+   FOREIGN KEY (mst_class_id) REFERENCES mst_class(class_id)
+);
+
+
+create table mst_subject(
+   subject_id INT NOT NULL AUTO_INCREMENT,
+   subject_name VARCHAR(100) NOT NULL,
+   PRIMARY KEY (subject_id)
+);
+
+
+create table mst_marks(
+   marks_id INT NOT NULL AUTO_INCREMENT,
+   year INT NOT NULL,
+   semester INT NOT NULL,
+   mst_student_id INT NOT NULL,
+   mst_class_id INT NOT NULL,
+   mst_subject_id INT NOT NULL,
+   marks_scored INT NOT NULL,
+   total_marks INT NOT NULL,
+   PRIMARY KEY (marks_id),
+   FOREIGN KEY (mst_class_id) REFERENCES mst_class(class_id),
+   FOREIGN KEY (mst_subject_id) REFERENCES mst_subject(subject_id),
+   FOREIGN KEY (mst_student_id) REFERENCES mst_student(student_id)
+);
+
+Select mst_student.student_name,mst_marks.mst_student_id from mst_marl
+
+select floor(avg(marks_scored)),mst_student.student_name from mst_marks INNER JOIN mst_student ON mst_marks.mst_student_id= mst_student.student_id where mst_student_id=1 

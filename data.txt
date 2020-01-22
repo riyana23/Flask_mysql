@@ -1,0 +1,45 @@
+localhost:9876/average
+
+- studentId: int
+
+- classId: int
+
+- subjectId: int
+
+localhost:9876/toppers
+
+- classId:int
+
+- subjectId: int
+
+database:
+
+mst_class:
+
+- name, id primary
+
+mst_student
+
+- name, id primary, mst_class_id: foreign key
+
+mst_subject
+
+ - name, id
+
+marks
+
+- year
+
+- semester
+
+- mst_student_id
+ 
+- mst_class_id
+
+- mst_subject_id
+
+- marks_scored
+
+- total_marks
+
+
