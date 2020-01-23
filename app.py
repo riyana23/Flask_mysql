@@ -41,22 +41,21 @@ def index():
         class_id = request.args.get('class_id')
 
         if student_id:
-            rows = mysql_connection.get_data(
-                f"select * from mst_student where student_id = {student_id}")
+            rows = mysql_connection.get_data(f"select * from mst_student where student_id={student_id}")
         elif subject_id:
             rows = mysql_connection.get_data(
-               f"select * from mst_student where subject_id = {subject_id}")
+               f"select * from mst_student where subject_id={subject_id}")
 
         elif class_id:
             rows = mysql_connection.get_data(
-                f"select * from mst_student where class_id = {class_id}")
+                f"select * from mst_student where class_id={class_id}")
         else:
             resp = jsonify({'error': 'User "id" not found in query string'})
             resp.status_code = 500
             return resp
         logging.error(rows)
 
-        resp = jsonify({'ID': rows[0][0], 'Name': rows[0][1],'ClassId': rows[0][2]})  # {"studentName":"Jasmine", "average": 98}
+        resp = jsonify({'ID': rows[0][0], 'Name': rows[0][1],'ClassId': rows[0][2]})  
         resp.status_code = 200
         return resp
     except Exception as e:
@@ -98,20 +97,7 @@ def average():
         raise e
 
 
-@app.route("/fail")
-def fail():
-    return render_template("/fail.html")
-
-
-@app.route("/topper")
-def topper():
-    return render_template("/topper.html")
-
-
-@app.route("/passed")
-def passed():
-    return render_template("/passed.html")
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=9876)
+    app.run(debug=True, port=8888)
