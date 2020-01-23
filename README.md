@@ -1,5 +1,3 @@
-# "Jasmine Topper Gold Medalist of amche topper Munni. Second some person." 
-
 How to run the app?
 
 ## Step1 Build the docker image
